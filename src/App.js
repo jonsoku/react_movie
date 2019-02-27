@@ -3,25 +3,6 @@ import './App.css';
 import Movie from './Movie';
 import Header from './Header';
 
-const movies=[
-    {
-
-        title:"매트릭스",
-        poster: "http://ticketimage.interpark.com/Movie/still_image/V16/V1601447p_s01.gif"
-    },
-    {
-        title:"올드보이",
-        poster: "http://artinsight.co.kr/n_news/peg/1508/thumb/a4cb4757610239a28cf0cba125b24a69_vpZESkDO68sOb6AbZkW9hFd.jpg"
-    },
-    {
-        title:"secret",
-        poster: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Secret-Bunengshuodemimi2.jpg/220px-Secret-Bunengshuodemimi2.jpg",
-    },
-    {
-        title:"스타워즈",
-        poster: "https://upload.wikimedia.org/wikipedia/ko/thumb/6/6a/%EC%8A%A4%ED%83%80%EC%9B%8C%EC%A6%88_%EA%B9%A8%EC%96%B4%EB%82%9C_%ED%8F%AC%EC%8A%A4.jpg/250px-%EC%8A%A4%ED%83%80%EC%9B%8C%EC%A6%88_%EA%B9%A8%EC%96%B4%EB%82%9C_%ED%8F%AC%EC%8A%A4.jpg"
-    },
-]
 
 class App extends Component {
 
@@ -51,23 +32,49 @@ class App extends Component {
     */
 
     state = {
-        greeting: 'Loading'
+        movies: [
+            {
+
+                title:"매트릭스",
+                poster: "http://ticketimage.interpark.com/Movie/still_image/V16/V1601447p_s01.gif"
+            },
+            {
+                title:"올드보이",
+                poster: "http://artinsight.co.kr/n_news/peg/1508/thumb/a4cb4757610239a28cf0cba125b24a69_vpZESkDO68sOb6AbZkW9hFd.jpg"
+            },
+            {
+                title:"secret",
+                poster: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Secret-Bunengshuodemimi2.jpg/220px-Secret-Bunengshuodemimi2.jpg",
+            },
+            {
+                title:"스타워즈",
+                poster: "https://upload.wikimedia.org/wikipedia/ko/thumb/6/6a/%EC%8A%A4%ED%83%80%EC%9B%8C%EC%A6%88_%EA%B9%A8%EC%96%B4%EB%82%9C_%ED%8F%AC%EC%8A%A4.jpg/250px-%EC%8A%A4%ED%83%80%EC%9B%8C%EC%A6%88_%EA%B9%A8%EC%96%B4%EB%82%9C_%ED%8F%AC%EC%8A%A4.jpg"
+            },
+        ]
     }
 
     componentDidMount(){
-        setTimeout(()=> {
+        setTimeout(() => {
             this.setState({
-                greeting: 'Hello again'
+                movies:[
+                    //삭제 : 기존의 것을 삭제하고 새로 만드는 state만 보여준다.
+                    //... : 상태를 유지하고, 추가한다.
+                    ...this.state.movies,
+                    {
+                        title:"시간을 달리는 소녀",
+                        poster:"https://t1.daumcdn.net/movie/7da2ccc618ca4dbb971379944a939fbf1541747671440"
+
+                    }
+                ]
             })
-        }, 2000)
+        }, 5000)
     }
 
     render() {
     return (
       <div className="App">
-          {this.state.greeting}
         <Header/>
-          {movies.map((movie, index) => {
+          {this.state.movies.map((movie, index) => {
               return <Movie title={movie.title} poster={movie.poster} key={index}/>
           })}
 
@@ -84,5 +91,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

@@ -20,3 +20,26 @@ class Header extends Component{
 }
 
 export default Header;
+
+
+#key
+
+리액트는 앨리먼트가 많을 경우(map사용 시) 고유한 키를 줘야한다.
+          {movies.map((movie, index) => {
+              return <Movie title={movie.title} poster={movie.poster} key={index}/>
+          })}
+          
+          
+          
+#PropTypes
+
+yarn add prop-types
+
+    import PropTypes from 'prop-types';
+
+    static propTypes = {
+        title:PropTypes.string,
+        poster:PropTypes.string,
+    }``
+    
+    => 검사하는 것

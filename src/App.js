@@ -5,6 +5,7 @@ import Header from './Header';
 
 const movies=[
     {
+
         title:"매트릭스",
         poster: "http://ticketimage.interpark.com/Movie/still_image/V16/V1601447p_s01.gif"
     },
@@ -27,8 +28,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-          {movies.map(movie => {
-              return <Movie title={movie.title} poster={movie.poster} />
+          {movies.map((movie, index) => {
+              return <Movie title={movie.title} poster={movie.poster} key={index}/>
           })}
 
 

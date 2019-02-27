@@ -26,7 +26,7 @@ const movies=[
 class App extends Component {
 
     /*
-    Lifesycle Events on React!
+    Lifecycle Events on React!
 
     #Render
     1. componentWillMount
@@ -49,17 +49,23 @@ class App extends Component {
     5. componentDidUpdate
     : hide spinner!
     */
-    componentWillMount() {
-        console.log('will mount');
+
+    state = {
+        greeting: 'Loading'
     }
 
-    componentDidMount() {
-        console.log('did mount');
+    componentDidMount(){
+        setTimeout(()=> {
+            this.setState({
+                greeting: 'Hello again'
+            })
+        }, 2000)
     }
 
     render() {
     return (
       <div className="App">
+          {this.state.greeting}
         <Header/>
           {movies.map((movie, index) => {
               return <Movie title={movie.title} poster={movie.poster} key={index}/>

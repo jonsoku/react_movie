@@ -43,3 +43,6 @@ yarn add prop-types
     }``
     
     => 검사하는 것
+    
+    
+#State

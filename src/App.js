@@ -24,7 +24,40 @@ const movies=[
 ]
 
 class App extends Component {
-  render() {
+
+    /*
+    Lifesycle Events on React!
+
+    #Render
+    1. componentWillMount
+    2. render
+    3. componentDidMount
+
+    예를들어 movie앱을 만들면,
+    1. willmount => api에 작업을 요청
+    2. render
+
+
+    #Update
+    1. componentWillReceiveProps
+    2. shouldComponentUpdate
+    : old props new props 를 살펴본 다음에, 이전과 새로운 props가 다르면,
+    리액트는 '업데이트 = true'라고 생각
+    3. componentWillUpdate
+    : 앱에 로딩중 spinner를 붙히면 , 이탈유저 감소효과 상승
+    4. render
+    5. componentDidUpdate
+    : hide spinner!
+    */
+    componentWillMount() {
+        console.log('will mount');
+    }
+
+    componentDidMount() {
+        console.log('did mount');
+    }
+
+    render() {
     return (
       <div className="App">
         <Header/>

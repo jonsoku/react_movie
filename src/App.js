@@ -34,21 +34,39 @@ class App extends Component {
     state = {
 
     }
-
+    // 네번째 실행
     componentDidMount(){
-        fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
-            .then(response => response.json())
-            .then(json => console.log(json))
-            .catch(err=>console.log(err))
+        this._getMovies();
     }
 
+    // 다섯째 실행
     _renderMovies = () => {
-        const movies = this.state.movies.map((movie, index) => {
-            return <Movie title={movie.title} poster={movie.poster} key={index}/>
+        const movies = this.state.movies.map(movie => {
+            console.log(movie)
+            return <Movie title={movie.title} poster={movie.large_cover_image} key={movie.id}/>
         })
         return movies;
     }
+    // 세번째 실행
+    _getMovies = async () => {
+        const movies = await this._callApi()
+        this.setState({
+            movies
+        })
+    }
+
+
+    // 두번째 실행
+    _callApi = () => {
+        return fetch('https://yts.am/api/v2/list_movies.json?sort_by=like_count')
+            .then(jonsoku => jonsoku.json())
+            .then(json => json.data.movies)
+            .catch(err => console.log(err))
+    }
+
     /* 처음엔 텅빈 state이기때문에 loading이 뜨지만, 5초후엔  setState로 채워지니 this._renderMovies()함수가 실행된다.   */
+
+    // 첫번째 실행
     render() {
     return (
       <div className="App">

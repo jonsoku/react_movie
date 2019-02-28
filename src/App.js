@@ -63,7 +63,7 @@ class App extends Component {
                     }
                 ]
             })
-        }, 5000)
+        }, 2000)
     }
 
     _renderMovies = () => {

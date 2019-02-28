@@ -46,3 +46,9 @@ yarn add prop-types
     
     
 #State
+
+state가 필요없는 component
+: dumb 
+
+state가 필요한 component
+: smart
